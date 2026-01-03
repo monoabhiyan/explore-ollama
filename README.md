@@ -9,7 +9,7 @@ A simple RAG (Retrieval-Augmented Generation) system using Ollama and ChromaDB.
 pip install -r requirements.txt
 
 # Make sure Ollama is running
-ollama serve
+ollama serve && ollama pull deepseek-r1:8b
 ```
 
 ## Usage
