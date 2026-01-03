@@ -1,6 +1,6 @@
 import os
-from utils.text_splitter import split_text
 from utils.file_helper import read_document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 def process_document(file_path: str):
@@ -8,7 +8,11 @@ def process_document(file_path: str):
     try:
         content = read_document(file_path)
 
-        chunks = split_text(content)
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=700,
+            chunk_overlap=150,
+        )
+        chunks = splitter.split_text(content)
 
         file_name = os.path.basename(file_path)
 
